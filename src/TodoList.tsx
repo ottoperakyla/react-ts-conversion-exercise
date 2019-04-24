@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
+import { Todo } from './types'
 
-class TodoList extends Component {
+type Props = {
+  inputElement: React.RefObject<HTMLInputElement>,
+  addItem: React.FormEventHandler<HTMLFormElement>,
+  handleInput: React.ChangeEventHandler<HTMLInputElement>,
+  currentItem: Todo
+}
+
+class TodoList extends Component<Props> {
   componentDidUpdate() {
-    this.props.inputElement.current.focus()
+    if (this.props.inputElement.current) {
+      this.props.inputElement.current.focus()
+    }
   }
   render() {
     return (

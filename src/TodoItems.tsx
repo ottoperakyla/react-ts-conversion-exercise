@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import { Todo } from './types'
 
-class TodoItems extends Component {
-  createTasks = item => {
+type Props = {
+  deleteItem: (key: string) => void,
+  entries: Todo[]
+}
+
+class TodoItems extends Component<Props> {
+  createTasks = (item: Todo) => {
     return (
       <li key={item.key} onClick={() => this.props.deleteItem(item.key)}>
         {item.text}
